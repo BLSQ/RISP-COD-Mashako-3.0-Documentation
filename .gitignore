@@ -5,3 +5,10 @@ attachments
 
 # Avoid clutter commits (this file changes every time I click something)
 .obsidian/workspace.json
+
+# Classic ... ignore any folder named "ignore" or "old" and their contents
+**/ignore/
+**/old/
+**/OLD/
+**/Ignore/
+**/OLD_*/

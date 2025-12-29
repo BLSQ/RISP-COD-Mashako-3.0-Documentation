@@ -1,25 +1,47 @@
-### What is this documentation about?
-In this documentation you should be able to find everything that you need to know continue the work (somewhat autonomously) on the automated report generation. 
+### Overview
+This is the documentation for the whole process necessary for the production of the 3 reports: 1) Zone, 2) Antenne, and 3) National.
+The whole magic happens in the OH ws "[COD Mashako 3.0 BLSQ](https://app.openhexa.org/workspaces/cod-mashako-3-0/)". Look here for a [[Tour of the OpenHEXA Workspace]].
+Generally speaking, each report is generated via a pipeline:
+1. "Rapport de la Zone" (Zone de Sante or ZS) <-- [[(pipeline) Production ZS report]]
+2. "Rapport de l'Antenne" (ANT) <-- [[(pipeline) Production Antenna report]]
+3. "Rapport de bord National" <-- 🚧 CURRENTLY EMPTY AS IT DOES NOT EXIST YET
 
-So what does "my" code do?
-Two main things:
-1. 📄 **Produce/generate the Automated Reports**. These are 3 "independent" [^1] reports that display and summarize data at different levels: Zone (as Zone de Sante or ZS), Antenna, and National. For each report (level of reporting), the processing includes data extraction, transformation (data wrangling and calculations) and assembly of the report (PDF file) which are eventually loaded to an amazon S3 bucket, so that files can be fetched by the user interface thingy. 
-2. ♾️ **Generate the "master" table for the Superset dashboard**. The dashboard and the report should display the same content (with different layout and interactivity) and therefore rely on the same data. Similarly to the reports, these tables are also produced as "independent" [^1] tables, one for each level of reporting. (Note: we currently don't have a "master" table for the National level report #addToJira )
-	1. Note: the logic of filtering and calculation differs to a certain extent between Superset and the report generation processing, and therefore certain steps are "repeated": performed twice, in OH and in Superset, to keep data "light". One such example is the the joining of the shapes (geometries) to the data that is done in OH later in the processing and then again in Superset. Other processes are repeated for other reasons ... (see Jira?)
+If you click on the respective links above (👆) you can find a detailed explanation of how each pipeline works. As a quick and generic overview, for each pipeline, we have:
+* a Py script (classic OH pipeline), which takes 
+* a `parameter` as input (period as "YYYYMM"), and that calls the execution of 
+* a .json (configuration) file defining the list of org units for which to create the reports
+* 5 orchestration notebooks (some take the same `period` parameter as input), each of which calls one or more
+* R or Py scripts, which are where the juicy things happen: data formatting, cleaning, filtering, aggregation and all calculations, creating of the content for the report, then assembling the reports (in an ♻️iterative process that loop over a list of org units, for a defined period as provided in the parameter), and finally loading the reports PDF files into an S3 bucket where they can be fetched via the web interface (based on user choice of report level, location/org unit and period)
+
+##### Note: Redundancy of data processing
+Each report has its own folder (e.g., `~/AUTOMATED_REPORTS/Pipeline_Rapport_de_la_Zone/`), each containing its specific code, and raw (when not extracted from DHIS2) and processed data. This was taken as a "safety" measure: the processes are not fully independent as they rely on sometimes overlapping data (i.e., data that comes from the same survey, but used across multiple reports). For efficiency, it would be nice to "re-use" the same processing across reports, however, given the complexity of the process and weird logic of the reports, it seems safer to keep each reports' data processing "siloed" in independent processes to avoid breaks from propagating across multiple pipelines. 
+
+### Data sources and input 
+Raw data primarily comes from [DHIS2 EZD SNIS](https://ezd.snisrdc.com/dhis/dhis-web-login/) instance from which we extract a bunch of things like data and metadata coming from forms/surveys (events), as well as generic metadata (pyramid, shapes, org units lists) and other stuff (datasets). 
+Additional data also comes form spreadsheets (but eventually this should also come from DHIS2), and from "helper" tables that I created provide input and values in a more dynamic way (avoid hard coding). 
+For a more detailed list of data sources look at [[Documents References & Formulas]] and at [[Rapport de l'Antenne - data sources]] (although this latter is specific to the "Antenne" level, the data sources are pretty much the same for the other reports).
+
+This means that there are also *other* [pipelines](https://app.openhexa.org/workspaces/cod-mashako-3-0/pipelines/?tab=pipelines) (*besides* the ones that generate the reports, which are called "**Production ... report**") that are part of the process but run somewhat separately: scheduled to run independently and at different frequency (i.e., pyramid extraction runs monthly, shapes extraction only once or on demand, events are extracted daily, ... ). 
+
+### Output
+The report generation pipeline(s) (see above) take the raw data and metadata and process it to create:
+* Intermediate objects:
+	* processed data as .CSV and .RDS files (tables) (`/out/formatted_data/`). This data is for the whole country (or better, uses all available data)
+	* objects as .PNG images of 📊 plots (`.../out/plots/final/plot*.png`) and ready-to-display .CSV 📅 tables (`.../out/data_for_tables/table*.csv`), which are produced *after* filtering for the specific org unit and period.
+* Final objects:
+	* 📄 **Report as PDF file**s (`.../out/reports/PDF/`)
+		* these files are then written to the S3 bucket to be available to the users via the [web interface](https://pev-rdc.bluesquare.org/#/reports)
+	* Report as **HTML** file (`.../out/reports/HTML/`): generated as part of the process (reports are first assembled as HTML files, then rendered to PDF)
+	* 🐘 **[Table](https://app.openhexa.org/workspaces/cod-mashako-3-0/databases/public_reports/) in the OH Database**: necessary for the web interface to fetch the correct report from the S3 bucket
+	* ♾️ **Data as "master tables" for *Superset***. These tables contain data for the whole country (or, all available data), both raw and calculated/aggregated, depending on the logic implemented in Superset.
+
+And here is a visual overview of the whole process. This example applies specifically to the "Rapport de la Zone" (see names of the pipelines), however, the same logic and structure applies to the other reports as well:
+![[Excalidraw_Zone-2025-12-24_dark.png]]
 
 
-### Redundancy of data processing
-Each report has its own folder (==ADD PATH and examples==) for "safety" (see footnote) ...
 
 
 
 
 
-### Note from the author
-This is where Giulia (me) left things after a year of work. Over time many things changed, mostly in our understanding of the data and the end product. We discovered a lot "as we go" and you will see traces of this in the way the process is structured. Namely, I would have structured things differently if I know then what I know now. Of note, many things are still unclear and expect things to change again to some extent in the future.
 
-
-
-
-
-[^1]: **independent**: the processes are not fully independent as they rely on sometimes overlapping data (data that comes from the same survey, used in different levels reports). For efficiency, it would have been great to be able to "re-use" the same processing across reports, however, given the complexity of the process, it seems safer to keep each reports' data processing "siloed" in independent processes. For this reason you will see a dedicated folder for each  report generation pipeline: this folder contains the dedicated code, and processed data.
