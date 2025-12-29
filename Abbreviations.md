@@ -1,9 +1,12 @@
 
-| Abbreviation | Explanation               |
-| ------------ | ------------------------- |
-| OH           | OpenHEXA                  |
-| EZD          | ???                       |
-| ZS           | Zone de Santé (level 3)   |
-| AS           | Aire de Santé (level 4)   |
-| CS           | Centre de Santé (level 5) |
-|              |                           |
+| Abbreviation | Explanation                                                                                                                                                                                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| OH           | OpenHEXA                                                                                                                                                                                                                                                      |
+| ws           | workspace                                                                                                                                                                                                                                                     |
+| EZD          | ???                                                                                                                                                                                                                                                           |
+| ZS           | Zone de Santé (level 3)                                                                                                                                                                                                                                       |
+| AS           | Aire de Santé (level 4)                                                                                                                                                                                                                                       |
+| CS           | Centre de Santé (level 5)                                                                                                                                                                                                                                     |
+| PEV          | Programme Elagi de Vaccination. <br>These are the people in the country for which we are setting all of this up. Eventually they will be the owners and users (client) of the data storage (DHIS2 instance, OH ws, Superset dashboard, and automated reports) |
+|              |                                                                                                                                                                                                                                                               |
+|              |                                                                                                                                                                                                                                                               |
