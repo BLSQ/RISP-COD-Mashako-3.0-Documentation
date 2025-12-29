@@ -34,7 +34,7 @@ ___
 ### 4. ⚠️ Technical Notes & 🚀 Future Implementations
 <mark style="background: #D2B3FFA6;">ADD these to JIRA EPIC Nr.5</mark>
    
-- **The "JSON Bridge":** Notebooks 2 and 3 do not take direct Papermill parameters for the health zone name. Instead, they read from `report_parameters.json`. If you change the report structure, ensure this file remains the "source of truth" for the current iteration.
+- **The "JSON Bridge":** Notebooks 2 and 3 do not take direct Papermill parameters for the health zone name. Instead, they read from `report_parameters.json`. If you change the report structure, ensure this file remains the "source of truth" for the current iteration. ==What does this do???==
 - **Scalability & Runtime Optimization:** The current implementation is a pilot for the **Kwilu** province. Scaling to all 519 health zones in the country may require optimizing the loop (e.g., parallel execution) to reduce total runtime (currently, the pipeline takes >1h for only 24 ZS … ).
 - **The `org_units` module:** the list of health zones in `org_units.py` is updated manually. Therefore change this if you need to include more ZS (i.e., during scaling up phase of the project)
 	- 💡Consider: might be more robust to fetched this dynamically from a stable source, such as the DHIS2 instance. This could be achieved my modifying the existing pipeline [Health Pyramid DHIS2](https://app.openhexa.org/workspaces/cod-mashako-3-0/pipelines/health-pyramids-dhis2/) which already produces .**csv** tables with original and cleaned names for the relevant levels. From this, we could simply extract the list of values (strings) under the column `zone_de_sante`.
