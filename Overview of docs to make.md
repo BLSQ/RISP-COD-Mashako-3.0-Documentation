@@ -6,18 +6,18 @@ This stuff is copy pasted *as is* from his DMs:
 > and then IF you have any time left to do what's more tricky for someone from outside
 > I saw your document that's by sources but for me it's hard to grasp it like that
 > I think there are **two documents** that could help onboarding
-> one is a **visual** image like this: ![[Pasted image 20251223114006.png]]
+> one is a **visual** image like this: ![](<./attachments/Pasted image 20251223114006.png>)
 > (Where the pipeline tells the place where it's the pipeline)
 > the other would be a document per pipeline that produces the report (the ones that create the file more than the extraction ones that I assume are easier to infer)
 > That would have a structure where for the places that's the most obvious ones you put three sections:
->  ![[Pasted image 20251223114219.png]]
+>  ![](<./attachments/Pasted image 20251223114219.png>)
 > Finally modify the code (if it's not done already) so that it's structured with sections easily recognizable with sections of the documents (Sections A.2) or general parts ( like library loading, functions)
 > For those parts that are missing write the smaller headers (Section B.3) and leave one single commented lines that says we should use source Y but it's missing. Probably better to use graph Y. This in the code notebooks
 > Then you make or reagroup one epic per report
 > and you move there the full tasks+stories that represents each of the missing sections ( ideally in the comment lines above you add the ID of the corresponding JIRA TASK)
 > You add another epic with the pipelines missing and one tasks per pipeline : of those you link them to the section tickets that are missing
 > And a 5th epic with things that could be improved or documented or place to be used for anything else missing
-> ![[Pasted image 20251223114735.png]]
+> ![](<./attachments/Pasted image 20251223114735.png>)
 > And finally at last document is: how to operate in your workflow + R for someone who doesn't do often. Because Leyre isn't used to and so I guess they will welcome it.
 
 > And spend from now to end of the year doing this and if you finish earlier then you can implement things yourself.
