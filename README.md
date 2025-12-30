@@ -13,8 +13,8 @@ If you click on the respective links above (👆) you can find a detailed explan
 * 5 orchestration notebooks (some take the same `period` parameter as input), each of which calls one or more
 * R or Py scripts, which are where the juicy things happen: data formatting, cleaning, filtering, aggregation and all calculations, creating of the content for the report, then assembling the reports (in an ♻️iterative process that loop over a list of org units, for a defined period as provided in the parameter), and finally loading the reports PDF files into an S3 bucket where they can be fetched via the web interface (based on user choice of report level, location/org unit and period)
 
-##### Note: Redundancy of data processing
-Each report has its own folder (e.g., `~/AUTOMATED_REPORTS/Pipeline_Rapport_de_la_Zone/`), each containing its specific code, and raw (when not extracted from DHIS2) and processed data. This was taken as a "safety" measure: the processes are not fully independent as they rely on sometimes overlapping data (i.e., data that comes from the same survey, but used across multiple reports). For efficiency, it would be nice to "re-use" the same processing across reports, however, given the complexity of the process and weird logic of the reports, it seems safer to keep each reports' data processing "siloed" in independent processes to avoid breaks from propagating across multiple pipelines. 
+And here is a visual overview of the whole process. This example applies specifically to the "Rapport de la Zone" (see names of the pipelines), however, the same logic and structure applies to the other reports as well:
+![[Excalidraw_Zone-2025-12-24_dark.png]]
 
 ### Data sources and input 
 Raw data primarily comes from [DHIS2 EZD SNIS](https://ezd.snisrdc.com/dhis/dhis-web-login/) instance from which we extract a bunch of things like data and metadata coming from forms/surveys (events), as well as generic metadata (pyramid, shapes, org units lists) and other stuff (datasets). 
@@ -34,9 +34,6 @@ The report generation pipeline(s) (see above) take the raw data and metadata and
 	* Report as **HTML** file (`.../out/reports/HTML/`): generated as part of the process (reports are first assembled as HTML files, then rendered to PDF)
 	* 🐘 **[Table](https://app.openhexa.org/workspaces/cod-mashako-3-0/databases/public_reports/) in the OH Database**: necessary for the web interface to fetch the correct report from the S3 bucket
 	* ♾️ **Data as "master tables" for *Superset***. These tables contain data for the whole country (or, all available data), both raw and calculated/aggregated, depending on the logic implemented in Superset.
-
-And here is a visual overview of the whole process. This example applies specifically to the "Rapport de la Zone" (see names of the pipelines), however, the same logic and structure applies to the other reports as well:
-![[Excalidraw_Zone-2025-12-24_dark.png]]
 
 
 

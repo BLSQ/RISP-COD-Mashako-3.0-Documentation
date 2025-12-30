@@ -37,7 +37,7 @@ Note:
 Notes:
 * Looks like they left out a bunch of ZS … (see at page 7 = table8 there are more ZS!)
 * For the rest should be simply the indicators #3, #4, #6, #8, ~~#9, #10,~~ #11, #12, #13 (the ones that **aggregate at ZS** level, data from “**Sup CS**”)
-	* TO BE CLARIFIED (leaving these out for now): the following indicators, *here* are aggregated at ZS level (from Sup CS) but in the summary of indicators ([[Rapport de l'Antenne - Plots to reproduce#plot2]]) this is not displayed (instead, it displays the data at Antenna level, from Sup ZS) 
+	* TO BE CLARIFIED (leaving these out for now): the following indicators, *here* are aggregated at ZS level (from Sup CS) but in the summary of indicators ([[Rapport de l'Antenne - Plots & Tables to reproduce#plot2]]) this is not displayed (instead, it displays the data at Antenna level, from Sup ZS) 
 		* “<mark style="background: #FF5582A6;">Disponibilite des vaccins</mark>” (Ind #9):
 		* “<mark style="background: #FF5582A6;">Satisfaction des commandes</mark>” (Ind #10): same as above …
 ![[Pasted image 20251105121959.png]]
