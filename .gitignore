@@ -1,7 +1,7 @@
 
 # For now ignore the folder /attachments/ becuase it contains a lot of images that I don't need to version ...
 # IMPORTANT: when making a website, these images will need to be tracked!
-attachments
+# attachments
 
 # Avoid clutter commits (this file changes every time I click something)
 .obsidian/workspace.json
