@@ -11,7 +11,8 @@ If you click on the respective links above (👆) you can find a detailed explan
 * a `parameter` as input (period as "YYYYMM"), and that calls the execution of 
 * a .json (configuration) file defining the list of org units for which to create the reports
 * 5 orchestration notebooks (some take the same `period` parameter as input), each of which calls one or more
-* R or Py scripts, which are where the juicy things happen: data formatting, cleaning, filtering, aggregation and all calculations, creating of the content for the report, then assembling the reports (in an ♻️iterative process that loop over a list of org units, for a defined period as provided in the parameter), and finally loading the reports PDF files into an S3 bucket where they can be fetched via the web interface (based on user choice of report level, location/org unit and period)
+* R or Py scripts, which are where the juicy things happen: data formatting, cleaning, filtering, aggregation and all calculations, creating of the content for the report, then assembling the reports (in an ♻️iterative process that loop over a list of org units, for a defined period as provided in the parameter), and finally loading the reports PDF files into an S3 bucket where they can be fetched via the web interface (based on user choice of report level, location/org unit and period). 
+	* 🚨 IMPORTANT: This code was versioned in [this GitHub repo](https://github.com/BLSQ/RISP-COD-Mashako-3.0) but the current code as executed by the pipelines has diverged from the last commit ... ! [TBD how to maintain versioning](https://bluesquare.atlassian.net/browse/RISP2223-472).
 
 And here is a visual overview of the whole process. This example applies specifically to the "Rapport de la Zone" (see names of the pipelines), however, the same logic and structure applies to the other reports as well:
 ![[Excalidraw_Zone-2025-12-24_dark.png]]
