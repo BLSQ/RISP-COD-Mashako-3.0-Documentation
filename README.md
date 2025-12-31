@@ -1,3 +1,5 @@
+> [!IMPORTANT]  
+> Refer to <b>Jira</b> for additional info and for the most up-to-date information on the status of each process!
 ### Overview
 This is the documentation for the whole process necessary for the production of the 3 reports: 1) Zone, 2) Antenne, and 3) National.
 
