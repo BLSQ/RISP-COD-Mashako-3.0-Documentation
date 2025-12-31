@@ -10,7 +10,7 @@
 
 - **Input Data**:
     - **Local PDF Reports**: Found in `.../out/reports/pdf/`.
-    - **Health Pyramid Metadata**: Relies on `pyramid_level3_antenne.csv` to map health zones to their respective "antennas" for database categorization (this file is produced by the [[(pipeline) Health Pyramids DHIS2]]).
+    - **Health Pyramid Metadata**: Relies on `pyramid_level3_antenne.csv` to map health zones to their respective "antennas" for database categorization (this file is produced by the [(pipeline) Health Pyramids DHIS2](<./(pipeline) Health Pyramids DHIS2.md>)).
 - **Connections**:
     - **S3**: `cod-bmgf-risp-public` [connection](https://app.openhexa.org/workspaces/cod-mashako-3-0/pipelines/36be60fe-dad0-4b6a-9f68-cdd50df6c43a/) for file hosting.
     - **Postgres DB**: The OH workspace [database](https://app.openhexa.org/workspaces/cod-mashako-3-0/databases/) URL for updating the `public_reports` [table](https://app.openhexa.org/workspaces/cod-mashako-3-0/databases/public_reports/).
