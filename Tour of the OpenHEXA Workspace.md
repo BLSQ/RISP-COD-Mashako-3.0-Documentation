@@ -16,7 +16,7 @@ For this part of the project, you are only interested in the content of the foll
 	* Data provided by Acasus, stored in `~/GENERIC/data/from_acasus/` . This is the file needed to add the "Antenna" level to the DHIS2 pyramid.
 	![](<./attachments/Pasted image 20251230154446.png>)
 * `~/PILOT/`: as mentioned above, this is part of the "Data Transfer to Acasus" process, where we take data collected via DHIS2 and reverse-engineer it to match the format of the Acasus data collection app. The important thing here is that **this folder stores both the code and the extracted data for the** `events` ! For more details and relevant implications for the workflow see [(notebook) RUN_0_extract_format.ipynb](<./(notebook) RUN_0_extract_format.ipynb.md>) (check the point marked with 💡)
-* `~/MANUAL_LOAD_TO_DATABASE/`: as the name says, to manually (one-time, try out stuff operations) write tables to the OH Database of this ws. Currently used to write the "master" tables from Superset. This step should be incorporated in the main pipeline once it has become more clear what exactly we want to expose to Superset #addToJira .
+* `~/MANUAL_LOAD_TO_DATABASE/`: as the name says, to manually (one-time, try out stuff operations) write tables to the OH Database of this ws. Currently used to write the "master" tables from Superset. This step should be incorporated in the main pipeline once it has become more clear what exactly we want to expose to Superset. Refer to [this Jira task](https://bluesquare.atlassian.net/browse/RISP2223-478).
 
 🚮 The following folders can probably be deleted (see [this Jira task](https://bluesquare.atlassian.net/browse/RISP2223-473) for more details):
  * `~/PRE-TEST/

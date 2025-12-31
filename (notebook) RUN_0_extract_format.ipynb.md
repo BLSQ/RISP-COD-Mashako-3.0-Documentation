@@ -35,11 +35,10 @@ The notebook uses **Papermill** to trigger ~~three~~ *a single* sub-notebook in 
 
 ---
 
-### 4. Technical Notes & Future Implementations
+### 4. 🚀 Technical Notes & Future Implementations
 
-- **Workaround Nature:** This notebook is a "wrapper." If you need to change the extraction logic (e.g., adding a new data field), you should modify the sub-notebooks (`01_`, `02_`, or `03_`) rather than this orchestrator.
-- **Hardcoded Context:** The current extraction logic contains province-specific IDs (e.g., for Kwilu) and hardcoded OrgUnit levels. These will need to be updated (or parameterized) when scaling the pipeline beyond the pilot province. #addToJira 
-- 💡**Consider** (see [Jira task](https://bluesquare.atlassian.net/browse/RISP2223-471)): change the **default behavior to use the already extracted via [(pipeline) PILOT 1.1. Extract and Format CS](<./(pipeline) PILOT 1.1. Extract and Format CS.md>) and [PILOT: 1.2. Extract and Format ZS](https://app.openhexa.org/workspaces/cod-mashako-3-0/pipelines/pilot-1-2-extract-and-format-zs/), instead of extracting it anew at each pipeline execution (via `01_extract_DHIS2_events_Supervision.ipynb`). Rationale: 
+- **Hardcoded Context:** The current extraction logic contains specific IDs of orgUnits (e.g., for Kwilu province only) hardcoded in the json config file (`~/AUTOMATED_REPORTS/Pipeline_Rapport_de_la_Zone/report_parameters.json`). These will need to be updated (or parameterized) when scaling the pipeline beyond the pilot province. Refer to [this Jira task](https://bluesquare.atlassian.net/browse/RISP2223-477).
+- 💡**Consider** (see [Jira task](https://bluesquare.atlassian.net/browse/RISP2223-471)): change the **default behavior to use the data already extracted via [(pipeline) PILOT 1.1. Extract and Format CS](<./(pipeline) PILOT 1.1. Extract and Format CS.md>) and [PILOT: 1.2. Extract and Format ZS](https://app.openhexa.org/workspaces/cod-mashako-3-0/pipelines/pilot-1-2-extract-and-format-zs/), instead of extracting it anew at each pipeline execution** (via `01_extract_DHIS2_events_Supervision.ipynb`). Rationale: 
 	- The “PILOT Extract and Format \*\*” pipelines are scheduled to **run daily anyways** (because they are part of the *data transfer to Acasus* process, see [Context and Additional Info](<./Context and Additional Info.md>))
 	- The extraction takes a significant portion of the pipeline execution time (~15 min): ![](<./attachments/Pasted image 20251223174903.png>)
 

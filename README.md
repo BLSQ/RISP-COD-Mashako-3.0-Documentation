@@ -24,7 +24,7 @@ And here is a visual overview of the whole process. This example applies specifi
 ### Data sources and input 
 Raw data primarily comes from [DHIS2 EZD SNIS](https://ezd.snisrdc.com/dhis/dhis-web-login/) instance from which we extract a bunch of things like data and metadata coming from forms/surveys (events), as well as generic metadata (pyramid, shapes, org units lists) and other stuff (datasets). 
 Additional data also comes form spreadsheets (but eventually this should also come from DHIS2), and from "helper" tables that I created provide input and values in a more dynamic way (avoid hard coding). 
-For a more detailed list of data sources look at [Documents References & Formulas](<./Documents References & Formulas.md>) and at [Rapport de l'Antenne - data sources](<./Rapport de l'Antenne - data sources.md>) (although this latter is specific to the "Antenne" level, the **data sources are pretty much the same for the other reports**).
+For a more detailed list of data sources look at [Documents References & Formulas](<./Documents References & Formulas.md>) and at [Rapport de l'Antenne - Data Sources](<./Rapport de l'Antenne - Data Sources.md>) (although this latter is specific to the "Antenne" level, the **data sources are pretty much the same for the other reports**).
 
 This means that there are also *other* [pipelines](https://app.openhexa.org/workspaces/cod-mashako-3-0/pipelines/?tab=pipelines) (*besides* the ones that generate the reports, which are called "**Production ... report**") that are part of the process but run somewhat separately: scheduled to run independently and at different frequency (i.e., pyramid extraction runs monthly, shapes extraction only once or on demand, events are extracted daily, ... ). 
 
