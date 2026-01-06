@@ -21,7 +21,8 @@ If you click on the respective links above (👆) you can find a detailed explan
 	* 🚨 IMPORTANT: This code was versioned in [this GitHub repo](https://github.com/BLSQ/RISP-COD-Mashako-3.0) but the current code as executed by the pipelines has diverged from the last commit ... ! [TBD how to maintain versioning](https://bluesquare.atlassian.net/browse/RISP2223-472).
 
 And here is a visual overview of the whole process. This example applies specifically to the "Rapport de la Zone" (see names of the pipelines), however, **the same logic and structure applies to the other reports** as well:
-![](<./attachments/Excalidraw-2025-12-24-1154_black_nobg.svg>)
+[![Process Diagram](./attachments/Excalidraw-2025-12-24-1154_black_nobg.svg)](https://github.com/BLSQ/RISP-COD-Mashako-3.0-Documentation/blob/main/attachments/Excalidraw-2025-12-24-1154_black_nobg.svg)
+
 
 ### Data sources and input 
 Raw data primarily comes from [DHIS2 EZD SNIS](https://ezd.snisrdc.com/dhis/dhis-web-login/) instance from which we extract a bunch of things like data and metadata coming from forms/surveys (events), as well as generic metadata (pyramid, shapes, org units lists) and other stuff (datasets). 
