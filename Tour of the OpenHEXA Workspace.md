@@ -55,3 +55,14 @@ Stephane is in charge of Superset, so for any question refer to him.
 Therefore, the only thing that you need to care about here for now is the table `public_reports` : this is used in the step [(notebook) RUN_4_py_save_reports_s3.ipynb](<./(notebook) RUN_4_py_save_reports_s3.ipynb.md>) which allows the users to access the reports via the [Web Interface](https://pev-rdc.bluesquare.org/#/reports).
 
 ![](<./attachments/Pasted image 20251230163330.png>)
+
+---
+### 🗂️ Dataset
+
+The Report generation process currently does *not* use Datasets.
+However, you might notice that the OH ws does contain [Datasets](https://app.openhexa.org/workspaces/cod-mashako-3-0/datasets/). These are only used for the "Data Transfer to Acasus" part of the project (see [Context and Additional Info](<./Context and Additional Info.md>)).  
+
+💡 **Curiosity**:
+This leverages the "Share with a workspace" feature of OH Datasets. In this case we share with the OH ws "🇨🇩 **COD Mashako 3.0 Acasus**", a ws made specifically for Acasus. In this way we can keep sensitive info in the BLSQ workspace (credentials) while giving real-time access to specific datasets which are regularly updated. 
+
+
