@@ -20,7 +20,7 @@ This is supposed to be the most exhaustive list of data needed for the report to
 	* ✅ "Supervision des CS et ZS - Cibles vaccinations", id: “cSr0sEazvAt”
 		**Note**: for higher levels (Antenna, National) need to aggregate these values …
 	* ✅ Extracted *once* **manually** (data is there), using this notebook: XXXXX
-	* ❌⚡Pipeline temporarily set up [here](https://app.openhexa.org/workspaces/cod-mashako-3-0/pipelines/dhis2-extract-cibles/) , but needs improvements! See [Jira task](https://bluesquare.atlassian.net/browse/RISP2223-468)
+	* ❌⚡Pipeline temporarily set up [here](https://app.openhexa.org/workspaces/cod-mashako-3-0/pipelines/dhis2-extract-cibles/) , but needs improvements! See [Jira task](https://bluesquare.atlassian.net/browse/RISP2223-468) but for more **context** also check [this Jira task (RELEASED)](https://bluesquare.atlassian.net/browse/RISP2223-400) and [this other Jira task (RELEASED)](https://bluesquare.atlassian.net/browse/RISP2223-449), and [this other Jira task ("To Do")](https://bluesquare.atlassian.net/browse/RISP2223-451)
 * ❌ 📚 “**Commission logistique**”: data shared via [3 spreadsheets](https://drive.google.com/drive/u/0/folders/1T5CO6E4pAVACMjALGkj0p2cE4gl-sSIC). Should be about “*disponibilité des vaccins et intrants*” (Hub, Ant) and “*suivi des approvisionnements du HUB vers les antennes*” … what about ZS … ?
 	* See [Jira task](https://bluesquare.atlassian.net/browse/RISP2223-431) for details
 * ✅🏛️ Health pyramid (DHIS2) 
